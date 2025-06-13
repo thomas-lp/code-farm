@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://33hnbk336g25"]
+
+[ext_resource type="PackedScene" uid="uid://7pk4ytvxy4kb" path="res://mundo_jogo/objeto_coletavel/objeto_coletavel.tscn" id="1_ayt2u"]
+[ext_resource type="Texture2D" uid="uid://3jyw57l7nkqm" path="res://assets/imagens/Set-Tools.png" id="2_rp4q4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fks4g"]
+radius = 7.0
+height = 14.0
+
+[node name="Regador" instance=ExtResource("1_ayt2u")]
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource("2_rp4q4")
+hframes = 5
+vframes = 10
+frame = 40
+
+[node name="Colisao" parent="." index="1"]
+visible = false
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_fks4g")
+
+[node name="Colisao" parent="AreaDetecao" index="0"]
+visible = false
+shape = SubResource("CapsuleShape2D_fks4g")

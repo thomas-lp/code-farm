@@ -1,0 +1,115 @@
+[gd_scene load_steps=13 format=3 uid="uid://chsijyi1x1s3"]
+
+[ext_resource type="PackedScene" uid="uid://455f8bih0bus" path="res://mundo_jogo/terreno/terreno_casa.tscn" id="1_4mwex"]
+[ext_resource type="PackedScene" uid="uid://dscfkde3tti8f" path="res://mundo_jogo/terreno/terreno_fazenda.tscn" id="1_848jc"]
+[ext_resource type="Script" path="res://mundo_jogo/mundo_jogo.gd" id="1_rswm3"]
+[ext_resource type="PackedScene" uid="uid://v1uk871srys8" path="res://mundo_jogo/animacoes/transicao_cenario/transicao_cenario.tscn" id="2_b3703"]
+[ext_resource type="PackedScene" uid="uid://c48mo1nwpwjc7" path="res://mundo_jogo/passagem/passagem.tscn" id="2_gcw66"]
+[ext_resource type="PackedScene" uid="uid://bperut1ryhs0o" path="res://mundo_jogo/jogador/jogador.tscn" id="2_ytvii"]
+[ext_resource type="PackedScene" uid="uid://dbkpdacppilwy" path="res://mundo_jogo/objeto_interativo/objeto_interativo.tscn" id="3_3at3k"]
+[ext_resource type="Texture2D" uid="uid://otnwpwe6jvss" path="res://assets/imagens/Tiny Wonder Forest/items&objects/summer and spring items.png" id="4_0nsch"]
+[ext_resource type="Texture2D" uid="uid://df3nifq2ujqwy" path="res://assets/imagens/retro_interior/TopDownHouse_SmallItems.png" id="7_ru7ms"]
+[ext_resource type="Texture2D" uid="uid://b0rkdwyiucb1j" path="res://assets/imagens/Tiny Wonder Farm/objects&items/plants free.png" id="8_jt3mr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nhjpn"]
+radius = 4.0
+height = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wlrp0"]
+radius = 20.0
+
+[node name="MundoJogo" type="Node2D"]
+script = ExtResource("1_rswm3")
+
+[node name="TerrenoFazenda" parent="." instance=ExtResource("1_848jc")]
+
+[node name="Passagem1" parent="TerrenoFazenda" instance=ExtResource("2_gcw66")]
+position = Vector2(150, 38)
+terreno_destino = "TerrenoCasa"
+passagem_destino = "Passagem2"
+direcao_spawn = 1
+
+[node name="Missao1" parent="TerrenoFazenda" instance=ExtResource("3_3at3k")]
+position = Vector2(110, 35)
+
+[node name="Sprite" parent="TerrenoFazenda/Missao1" index="0"]
+texture = ExtResource("4_0nsch")
+region_enabled = true
+region_rect = Rect2(32, 192, 16, 16)
+
+[node name="Colisao" parent="TerrenoFazenda/Missao1" index="1"]
+position = Vector2(0, 3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nhjpn")
+
+[node name="Colisao" parent="TerrenoFazenda/Missao1/AreaDetecao" index="0"]
+shape = SubResource("CircleShape2D_wlrp0")
+
+[node name="TerrenoCasa" parent="." instance=ExtResource("1_4mwex")]
+position = Vector2(-1067, -5)
+
+[node name="Passagem2" parent="TerrenoCasa" instance=ExtResource("2_gcw66")]
+position = Vector2(48, 192)
+terreno_destino = "TerrenoFazenda"
+passagem_destino = "Passagem1"
+
+[node name="Missao2" parent="TerrenoCasa" instance=ExtResource("3_3at3k")]
+position = Vector2(111, 50)
+
+[node name="Sprite" parent="TerrenoCasa/Missao2" index="0"]
+texture = ExtResource("7_ru7ms")
+region_enabled = true
+region_rect = Rect2(36, 22, 9, 9)
+
+[node name="Colisao" parent="TerrenoCasa/Missao2" index="1"]
+position = Vector2(0, 3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nhjpn")
+
+[node name="Colisao" parent="TerrenoCasa/Missao2/AreaDetecao" index="0"]
+shape = SubResource("CircleShape2D_wlrp0")
+
+[node name="Missao3" parent="TerrenoCasa" instance=ExtResource("3_3at3k")]
+position = Vector2(-28, 16)
+
+[node name="Sprite" parent="TerrenoCasa/Missao3" index="0"]
+texture = ExtResource("7_ru7ms")
+region_enabled = true
+region_rect = Rect2(5, 84, 7, 11)
+
+[node name="Colisao" parent="TerrenoCasa/Missao3" index="1"]
+position = Vector2(0, 3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_nhjpn")
+
+[node name="Colisao" parent="TerrenoCasa/Missao3/AreaDetecao" index="0"]
+shape = SubResource("CircleShape2D_wlrp0")
+
+[node name="Missao4" parent="TerrenoCasa" instance=ExtResource("3_3at3k")]
+position = Vector2(1379, -19)
+
+[node name="Sprite" parent="TerrenoCasa/Missao4" index="0"]
+texture = ExtResource("8_jt3mr")
+region_enabled = true
+region_rect = Rect2(64, 32, 16, 16)
+
+[node name="Colisao" parent="TerrenoCasa/Missao4" index="1"]
+position = Vector2(0, 3)
+rotation = 1.5708
+
+[node name="Colisao" parent="TerrenoCasa/Missao4/AreaDetecao" index="0"]
+shape = SubResource("CircleShape2D_wlrp0")
+
+[node name="Jogador" parent="." instance=ExtResource("2_ytvii")]
+position = Vector2(276, -21)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TransicaoCenario" parent="CanvasLayer" instance=ExtResource("2_b3703")]
+
+[editable path="TerrenoFazenda/Passagem1"]
+[editable path="TerrenoFazenda/Missao1"]
+[editable path="TerrenoCasa/Passagem2"]
+[editable path="TerrenoCasa/Missao2"]
+[editable path="TerrenoCasa/Missao3"]
+[editable path="TerrenoCasa/Missao4"]
