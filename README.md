@@ -7,12 +7,10 @@
 O jogo visa ensinar conceitos fundamentais da linguagem Python por meio de missões, desafios e interação com personagens em um ambiente de fazenda.
 
 ## 🗂 Estrutura do projeto
-```
-code-farm/
-├── jogo/      → Projeto Godot (Godot 4) — deve ser aberto e testado diretamente na Godot Engine
-├── api/       → API Python com FastAPI — deve ser executada em paralelo para fornecer validações dinâmicas
-└── README.md  → Este arquivo
-```
+code-farm/  
+├── jogo/      → Projeto Godot (Godot 4) — deve ser aberto e testado diretamente na Godot Engine  
+├── api/       → API Python com FastAPI — deve ser executada em paralelo para fornecer validações dinâmicas  
+└── README.md  → Este arquivo  
 
 ## 🎮 Como rodar o jogo
 
@@ -69,8 +67,8 @@ http://127.0.0.1:8000
 - O sistema é expansível com novas missões e regras.
 
 ## ✅ Status
-✔️ Funcional
-🚧 Em desenvolvimento contínuo
+✔️ Funcional  
+🚧 Em desenvolvimento contínuo  
 
 ## 📄 Licença
 Este projeto está licenciado sob a licença MIT. Veja o arquivo LICENSE para mais detalhes.
