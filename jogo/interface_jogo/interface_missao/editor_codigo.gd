@@ -7,7 +7,8 @@ signal codigo_analisado_api(resultado_api: ResultadoAPI)
 @onready var _code_edit = %CodeEdit
 @onready var _requisicao_http = %RequisicaoHTTP
 
-const API_URL = "http://127.0.0.1:8000/analisar_codigo"
+#const API_URL = "http://127.0.0.1:8000/analisar_codigo"
+const API_URL = "https://code-farm.onrender.com/analisar_codigo"
 
 func _ready():
 	desativar()

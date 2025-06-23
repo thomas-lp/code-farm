@@ -23,11 +23,21 @@
 #main.py
 
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
 from modelos import RequisicaoCodigo
 from roteador import obter_analisador
 import analisador
 
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 @app.post("/analisar_codigo")
 def endpoint_analisar_codigo(requisicao: RequisicaoCodigo):
