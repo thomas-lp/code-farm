@@ -8,9 +8,10 @@ O jogo visa ensinar conceitos fundamentais da linguagem Python por meio de miss�
 
 ## 🗂 Estrutura do projeto
 code-farm/  
-├── jogo/      → Projeto Godot (Godot 4) — deve ser aberto e testado diretamente na Godot Engine  
-├── api/       → API Python com FastAPI — deve ser executada em paralelo para fornecer validações dinâmicas  
-└── README.md  → Este arquivo  
+├── jogo/        → Projeto Godot (Godot 4) — deve ser aberto e testado diretamente na Godot Engine  
+├── api/         → API Python com FastAPI — deve ser executada em paralelo para fornecer validações dinâmicas  
+├── LICENSE      → Licença do projeto  
+└── README.md    → Este arquivo  
 
 ## 🎮 Como rodar o jogo
 
