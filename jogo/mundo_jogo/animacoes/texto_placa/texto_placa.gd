@@ -16,11 +16,12 @@ func _process(delta: float) -> void:
 		var deslocamento = sin(_tempo * 2.0) * 4.0 
 		position.y = _posicao_base.y + deslocamento
 
-func exibir(texto: String, posicao: Vector2) -> void:
+func exibir(texto: String, posicao_tela: Vector2) -> void:
 	_texto.text = texto
 	show()
 
-	global_position = posicao - Vector2(0, size.y + 10)
+	position = posicao_tela - Vector2(size.x / 2, size.y + 15)
+	
 	_posicao_base = position
 	_tempo = 0.0
 	_flutuando = true

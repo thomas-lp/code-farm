@@ -31,14 +31,14 @@ func _se_houver_interacao() -> void:
 		_interecao_em_execucao = true
 		emit_signal("interagiu")
 
-func _ao_detectar_entrada(area: Area2D) -> void:
-	if _detecao_ativa:
+func _ao_detectar_entrada(corpo: Node2D) -> void:
+	if _detecao_ativa and corpo.is_in_group("Jogador"):
 		_label_interacao.show()
 		_animador.play("destacar_objeto")
 		_jogador_dentro = true
 
-func _ao_detectar_saida(area: Area2D) -> void:
-	if _detecao_ativa:
+func _ao_detectar_saida(corpo: Node2D) -> void:
+	if _detecao_ativa and corpo.is_in_group("Jogador"):
 		_label_interacao.hide()
 		_animador.play("RESET")
 		_interecao_em_execucao = false

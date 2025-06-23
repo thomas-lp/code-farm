@@ -6,11 +6,12 @@ extends Control
 @onready var _grid: GridContainer = %GridContainer
 
 var _slots: Array = []
-var _indice_selecionado := 0 
+var _indice_selecionado: int = 0 
 
 func _ready():
 	call_deferred("_atualizar_hotbar")
-
+	Global.conectar_sinal(Global, "item_adicionado", Callable(self, "_ao_adicionar_item"))
+	
 func _atualizar_hotbar():	
 	while not is_visible_in_tree():
 		await get_tree().process_frame
@@ -47,23 +48,6 @@ func atualizar_slots_com_dados_do_inventario() -> void:
 func _ao_mudar_visibilidade_interface_padrao() -> void:
 	call_deferred("_atualizar_hotbar")
 
-
-#func adicionar_item(item: Item) -> bool:
-	## Tenta acumular
-	#for slot in _slots:
-		#if slot.pilha and slot.pilha.item == item:
-			#slot.pilha.quantidade += 1
-			#slot.atualizar_slot()
-			#return true
-#
-	## Tenta novo slot
-	#for slot in _slots:
-		#if slot.pilha == null:
-			#var nova_pilha = ItemStack.new()
-			#nova_pilha.item = item
-			#nova_pilha.quantidade = 1
-			#slot.pilha = nova_pilha
-			#slot.atualizar_slot()
-			#return true
-#
-	#return false # Não há espaço
+func _ao_adicionar_item(_pilha: PilhaItens):
+	print("[HOTBAR] Sinal recebido: item adicionado -> ", _pilha.item.nome)
+	atualizar_slots_com_dados_do_inventario()

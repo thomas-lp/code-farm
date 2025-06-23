@@ -2,9 +2,6 @@ class_name RoteiroMissao
 
 extends Node 
 
-signal missao_concluida
-
-# Referências que o GerenciadorJogo vai injetar
 var mundo_jogo: MundoJogo
 var interface_jogo: InterfaceJogo
 var _interface_missao: InterfaceMissao
@@ -14,15 +11,20 @@ var _pausada: bool = false
 func configurar(mundo_jogo: MundoJogo, interface_jogo: InterfaceJogo):
 	self.mundo_jogo = mundo_jogo
 	self.interface_jogo = interface_jogo
-	
+
 	_interface_missao = interface_jogo.obter_interface(interface_jogo.Interface.MISSAO)
-	
+
 	Global.conectar_sinal(Global, "abrir_glossario", Callable(self, "_pausar_missao"))
 	Global.conectar_sinal(Global, "glossario_fechado", Callable(self, "_retomar_missao"))
+	Global.conectar_sinal(Global, "solicitar_dados_requisicao", Callable(self, "_quando_editor_solicitar_dados"))
 
-# Método obrigatório a ser implementado pelas missões
+# Método obrigatório a ser sobrescrito pelas missões
 func executar() -> void:
 	pass
+
+# Metodo opicional a ser sobrescrito em missoes que precisam de contexto
+func contexto():
+	return {}
 
 # Métodos utilitários básicos que o script pode usar
 func dialogo(texto: String) -> void:
@@ -38,6 +40,7 @@ func obter_codigo_analisado() -> ResultadoAPI:
 	_interface_missao.ativar_editor_codigo()
 	var resultado = await _interface_missao.obter_resultado_api()
 	_interface_missao.desativar_editor_codigo()
+	
 	return resultado
 
 func limpar_editor_codigo() -> void:
@@ -55,5 +58,12 @@ func aguardar_retomar() -> void:
 	
 func concluir_missao():
 	limpar_editor_codigo()
-	missao_concluida.emit() 
-	Global.propagar_sinal("missao_concluida", self)
+	Global.emit_signal("missao_concluida")
+
+func _quando_editor_solicitar_dados():
+	var dados := {
+		"id_missao": Global.missao_atual,
+		"codigo": _interface_missao.obter_codigo_digitado(),
+		"contexto": contexto()
+	}
+	Global.emit_signal("dados_requisicao_prontos", dados)

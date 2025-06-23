@@ -11,6 +11,7 @@ const API_URL = "http://127.0.0.1:8000/analisar_codigo"
 
 func _ready():
 	desativar()
+	Global.conectar_sinal(Global, "dados_requisicao_prontos", Callable(self, "_ao_receber_dados_requisicao"))
 
 func ativar() -> void:
 	_code_edit.editable = true
@@ -20,26 +21,27 @@ func desativar() -> void:
 	_code_edit.editable = false
 	self.modulate = Color(0.6, 0.6, 0.6, 1.0)
 
-func obter_resultado_api() -> ResultadoAPI:
-	return await codigo_analisado_api
+func obter_codigo_digitado() -> String:
+	return _code_edit.text
 
 func limpar() -> void:
 	_code_edit.text = ""
+
+func obter_resultado_api() -> ResultadoAPI:
+	return await codigo_analisado_api
 
 func _ao_apertar_botao_limpar() -> void:
 	limpar()
 
 func _ao_apertar_botao_verificar() -> void:
-	var dados = {
-		"id_missao": Global.missao_atual,
-		"codigo": _code_edit.text
-	}
-	
+	Global.emit_signal("solicitar_dados_requisicao")
+
+func _ao_receber_dados_requisicao(dados: Dictionary) -> void:
 	var headers = ["Content-Type: application/json"]
 	var json_data = JSON.stringify(dados)
 	
 	_requisicao_http.request(API_URL, headers, HTTPClient.METHOD_POST, json_data)
-	
+
 func _ao_completar_requisicao_http(result: int, response_code: int, headers: PackedStringArray, body: PackedByteArray) -> void:
 	var resultado_api = ResultadoAPI.new()
 

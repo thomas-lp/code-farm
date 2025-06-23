@@ -17,14 +17,11 @@ func _ready():
 	painel_creditos.visible = false
 	fundo_texto_creditos.clip_contents = true
 	
-	Global.propagar_sinal("novo_jogo", self)
-	Global.propagar_sinal("continuar_jogo", self)
-
 func _ao_clicar_novo_jogo():
-	emit_signal("novo_jogo")
+	Global.emit_signal("novo_jogo")
 
 func _ao_clicar_continuar_jogo():
-	emit_signal("continuar_jogo")
+	Global.emit_signal("continuar_jogo")
 
 func _ao_clicar_sair_jogo():
 	get_tree().quit()

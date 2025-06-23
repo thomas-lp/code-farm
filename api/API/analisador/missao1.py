@@ -2,7 +2,9 @@
 
 import ast
 from .base import AnalisadorMissao
+from roteador import registrar_missao
 
+@registrar_missao(1)
 class AnalisadorMissao1(AnalisadorMissao):
     def analisar_semantica(self) -> dict:
         mensagens = []

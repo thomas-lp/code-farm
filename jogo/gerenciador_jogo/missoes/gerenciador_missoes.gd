@@ -42,7 +42,7 @@ func _ao_interagir_objeto() -> void:
 func _executar_missao_atual() -> void:
 	_objeto_missao_atual.desativar_interacao()
 	
-	var caminho_missao = "res://missoes/roteiros/missao%d.gd" % Global.missao_atual
+	var caminho_missao = "res://gerenciador_jogo/missoes/roteiros/missao%d.gd" % Global.missao_atual
 	_roteiro_missao_atual = load(caminho_missao).new()
 	_roteiro_missao_atual.configurar(mundo_jogo, interface_jogo)
 
@@ -54,9 +54,8 @@ func _concluir_missao_atual() -> void:
 	Global.missao_atual += 1
 	print("Missao %d concluida!" % Global.missao_atual)
 	
-	var jogador = mundo_jogo.find_child("Jogador")
-	if jogador:
-		Global.salvar_jogo(jogador.global_position)
+	var jogador = mundo_jogo.obter_jogador()
+	Global.salvar_jogo(jogador.global_position)
 	
 	_ativar_objeto_missao_atual()
 	

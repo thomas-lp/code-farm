@@ -131,6 +131,7 @@ _data = {
 }
 
 [node name="ObjetoColetavel" type="StaticBody2D" groups=["ObjetosColetaveis"]]
+collision_layer = 4
 script = ExtResource("1_bhuq2")
 
 [node name="Sprite" type="Sprite2D" parent="."]
@@ -167,5 +168,5 @@ text = "[E] para coletar"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="area_entered" from="AreaDetecao" to="." method="_ao_detectar_entrada"]
-[connection signal="area_exited" from="AreaDetecao" to="." method="_ao_detectar_saida"]
+[connection signal="body_entered" from="AreaDetecao" to="." method="_ao_detectar_entrada"]
+[connection signal="body_exited" from="AreaDetecao" to="." method="_ao_detectar_saida"]

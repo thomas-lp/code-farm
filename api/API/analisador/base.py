@@ -3,8 +3,9 @@
 from abc import ABC, abstractmethod
 
 class AnalisadorMissao(ABC):
-    def __init__(self, codigo: str):
+    def __init__(self, codigo: str, contexto: dict = None):
         self.codigo = codigo
+        self.contexto = contexto or {}
 
     def analisar(self) -> dict:
         erro = self.analisar_sintaxe()

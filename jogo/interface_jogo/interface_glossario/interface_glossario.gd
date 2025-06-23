@@ -2,8 +2,6 @@ class_name InterfaceGlossario
 
 extends Control
 
-signal glossario_fechado
-
 @onready var CenaBotaoListaGlossario: PackedScene = preload("res://interface_jogo/interface_glossario/botao_lista_glossario/botao_lista_glossario.tscn")
 
 @onready var _lista_termos: VBoxContainer = %ListaTermos
@@ -18,7 +16,7 @@ var _termos_apreendidos: Array = []
 func _ready():
 	_aplicar_corte_em_todos_os_frames()
 	_limpar_texto_livro()
-	Global.propagar_sinal("glossario_fechado", self)
+	Global.emit_signal("glossario_fechado")
 
 func _aplicar_corte_em_todos_os_frames():
 	var frames = _livro_animado.sprite_frames
@@ -121,7 +119,7 @@ func _ao_fechar_glossario():
 	_limpar_texto_livro()
 	await _tocar_animacao("fechar")
 	hide()
-	emit_signal("glossario_fechado")
+	Global.emit_signal("glossario_fechado")
 
 func _inicializar_glossario():
 	for botao in _lista_termos.get_children():

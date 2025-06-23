@@ -16,24 +16,27 @@ func executar() -> void:
 			await dialogo("Muito bem! Agora veja o nome da sua fazenda na placa!")
 
 			var nome = resultado.dados.get("nome_fazenda", "Minha Fazenda")
-			await _tocar_animacao_sucesso(nome)
+			await _tocar_animacao_placa(nome)
+
+			await dialogo("Agora que você já identificou sua nova fazenda, que tal entrar em casa e explorar mais?")
 
 			sucesso = true
 		else:
 			for mensagem in resultado.mensagens:
-				print("MENSAGEM: " + mensagem)
 				await dialogo(mensagem)
 	
 	concluir_missao()
 	
-func _tocar_animacao_sucesso(nome_fazenda: String) -> void:
+func _tocar_animacao_placa(nome_fazenda: String) -> void:
 	var placa = mundo_jogo.obter_objeto_interativo_atual()
-	var posicao_placa = placa.global_position
-	
+
+	var posicao_tela = placa.get_global_transform_with_canvas().origin
+
 	var texto_placa = preload("res://mundo_jogo/animacoes/texto_placa/texto_placa.tscn").instantiate()
-	mundo_jogo.add_child(texto_placa)
-	
-	texto_placa.exibir(nome_fazenda, posicao_placa)
+	mundo_jogo.adicionar_elemento_canvas(texto_placa)
+
+	texto_placa.exibir(nome_fazenda, posicao_tela)
+
 	await mundo_jogo.get_tree().create_timer(5).timeout
 
 	texto_placa.esconder()

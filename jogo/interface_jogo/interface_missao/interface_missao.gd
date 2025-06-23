@@ -7,15 +7,10 @@ extends Control
 @onready var _tooltip: Control = %Tooltip
 @onready var _botao_fechar: Button = %BotaoFechar
 
-signal missao_fechada
-
 #Temporariamente o personagem e a foto serão estáticos. 
 #Incorporar futuramente nos roteiros metodos para alternar personagens e fotos
 var foto = "res://assets/imagens/Tiny Wonder Forest/characters/main character old/portrait female.png"
 var personagem = "Thais"
-
-func _ready() -> void:
-	Global.propagar_sinal("missao_fechada", self)
 
 func exibir_dialogo(texto: String) -> void: 
 	await _caixa_dialogo.exibir_dialogo(texto, foto, personagem, _caixa_dialogo.TipoDeDialogo.DIALOGO)
@@ -31,6 +26,9 @@ func ativar_editor_codigo() -> void:
 
 func desativar_editor_codigo() -> void:
 	_editor_codigo.desativar()
+
+func obter_codigo_digitado() -> String:
+	return _editor_codigo.obter_codigo_digitado()
 
 func obter_resultado_api() -> ResultadoAPI:
 	return await _editor_codigo.obter_resultado_api() 
@@ -50,4 +48,4 @@ func _ao_clicar_fechar_missao():
 	
 	_caixa_dialogo.parar_som()
 		
-	emit_signal("missao_fechada")
+	Global.emit_signal("missao_fechada")

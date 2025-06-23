@@ -1,26 +1,26 @@
 extends RoteiroMissao
 
 func executar() -> void:
-	#await dialogo("Ei! Olha só o quintal! Suas alfaces estão crescendo rápido, mas precisam de água todos os dias.")
-	#await dialogo("São cinco cabeças de alface... Regar uma por uma com um comando separado seria bem cansativo, né?")
-	#await dialogo("Imagine se você tivesse que escrever um comando pra cada uma, assim:")
-	#await codigo("
-#print(\"Regando alface 1\")
-#print(\"Regando alface 2\")
-#print(\"Regando alface 3\")
-#print(\"Regando alface 4\")
-#print(\"Regando alface 5\")
-				#")
-	#await dialogo("Funciona, mas é meio repetitivo... e se fossem 50 alfaces?")
-	#await dialogo("É por isso que em programação usamos estruturas de repetição! Com o for, você consegue repetir uma tarefa várias vezes com pouquíssimas linhas.")
-	#await dialogo("O comando for permite repetir uma ação um número determinado de vezes. Olha só como podemos reescrever o código anterior usando for:")
+	await dialogo("Ei! Olha só o quintal! Suas alfaces estão crescendo rápido, mas precisam de água todos os dias.")
+	await dialogo("São cinco cabeças de alface... Regar uma por uma com um comando separado seria bem cansativo, né?")
+	await dialogo("Imagine se você tivesse que escrever um comando pra cada uma, assim:")
+	await codigo("
+print(\"Regando alface 1\")
+print(\"Regando alface 2\")
+print(\"Regando alface 3\")
+print(\"Regando alface 4\")
+print(\"Regando alface 5\")
+				")
+	await dialogo("Funciona, mas é meio repetitivo... e se fossem 50 alfaces?")
+	await dialogo("É por isso que em programação usamos estruturas de repetição! Com o for, você consegue repetir uma tarefa várias vezes com pouquíssimas linhas.")
+	await dialogo("O comando for permite repetir uma ação um número determinado de vezes. Olha só como podemos reescrever o código anterior usando for:")
 	await codigo('
 for i in range(1, 6):
 	print("Regando alface", i)
 				')
-	#await dialogo("Esse range(1, 6) cria um intervalo com os números de 1 até 5. A variável i vai mudando a cada repetição!")
-	#await dialogo("É como se a gente estivesse com um balde de água, andando de alface em alface, dependendo de quantas vezes especificamos para isso acontecer no for!")
-	#await dialogo("Vamos por isso em prática! Escreva um código que use for para regar todas as alfaces do quintal. Use print() para exibir qual alface está sendo regada!")
+	await dialogo("Esse range(1, 6) cria um intervalo com os números de 1 até 5. A variável i vai mudando a cada repetição!")
+	await dialogo("É como se a gente estivesse com um balde de água, andando de alface em alface, dependendo de quantas vezes especificamos para isso acontecer no for!")
+	await dialogo("Vamos por isso em prática! Escreva um código que use for para regar todas as alfaces do quintal. Use print() para exibir qual alface está sendo regada!")
 
 	var sucesso = false
 	while not sucesso:

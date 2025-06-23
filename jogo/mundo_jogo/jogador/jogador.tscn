@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dtllcjn1io0e" path="res://assets/imagens/cute_fantasy/Player/Player_Actions.png" id="2_so6ri"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_likew"]
-radius = 3.0
-height = 12.0
+radius = 1.0
+height = 10.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_stnbq"]
 
@@ -58,7 +58,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0.5, -6)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -136,7 +136,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0.5, -5)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -214,7 +214,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0.5, -5)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -292,7 +292,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-0.5, 0)]
+"values": [Vector2(0.5, -6)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -370,7 +370,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-0.5, 0)]
+"values": [Vector2(-0.5, -6)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -448,7 +448,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0.5, -6)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -526,7 +526,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(0.5, -6)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -604,7 +604,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-0.5, 0)]
+"values": [Vector2(0.5, -6)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -682,7 +682,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-0.5, 0)]
+"values": [Vector2(-0.5, -6)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -759,7 +759,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-0.5, 0)]
+"values": [Vector2(-0.5, -6)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -801,19 +801,19 @@ _data = {
 }
 
 [node name="Jogador" type="CharacterBody2D" groups=["Jogador"]]
+y_sort_enabled = true
 collision_mask = 6
 platform_on_leave = 2
 script = ExtResource("1_dqjfs")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-position = Vector2(0.493588, -2.66759)
 texture = ExtResource("2_e1dja")
+offset = Vector2(0.5, -6)
 hframes = 6
 vframes = 10
 frame = 1
 
 [node name="Colisao" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_likew")
 one_way_collision_margin = 0.0
@@ -821,6 +821,7 @@ one_way_collision_margin = 0.0
 [node name="AreaDetecao" type="Area2D" parent="."]
 
 [node name="ColisaoDetecao" type="CollisionShape2D" parent="AreaDetecao"]
+position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_stnbq")
 
 [node name="Camera" type="Camera2D" parent="."]

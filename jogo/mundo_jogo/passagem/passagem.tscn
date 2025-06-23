@@ -1,14 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c48mo1nwpwjc7"]
+[gd_scene load_steps=2 format=3 uid="uid://c48mo1nwpwjc7"]
 
 [ext_resource type="Script" path="res://mundo_jogo/passagem/passagem.gd" id="1_xn48j"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_gytu5"]
 
 [node name="Passagem" type="Area2D" groups=["Passagens"]]
 script = ExtResource("1_xn48j")
 
 [node name="ColisaoDetecao" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_gytu5")
 
 [node name="PosicaoSpawn" type="Marker2D" parent="."]
 

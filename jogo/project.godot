@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Code Farm"
-run/main_scene="res://gerenciador_jogo.tscn"
+run/main_scene="res://gerenciador_jogo/gerenciador_jogo.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 
 [autoload]
@@ -134,7 +134,7 @@ hotbar_6={
 
 2d_physics/layer_1="jogador"
 2d_physics/layer_2="mundo"
-2d_physics/layer_3="objetos_interativos"
+2d_physics/layer_3="objetos"
 
 [rendering]
 

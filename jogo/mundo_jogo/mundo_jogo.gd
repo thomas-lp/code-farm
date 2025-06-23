@@ -2,8 +2,10 @@ class_name MundoJogo
 
 extends Node2D
 
-@onready var _transicao_cenario: TransicaoCenario = $CanvasLayer/TransicaoCenario
 @onready var _jogador: Jogador = $Jogador
+
+@onready var _canvas = %CanvasLayer
+@onready var _transicao_cenario: TransicaoCenario = %TransicaoCenario
 
 var _terreno_atual: Node2D = null
 
@@ -40,7 +42,7 @@ func desativar_movimento_jogador():
 	_jogador.desativar_movimento()
 
 func obter_jogador() -> Jogador:
-	return find_child("Jogador", true, false)
+	return _jogador
 
 func obter_objeto_interativo_atual() -> ObjetoInterativo:
 	return find_child("Missao%d" % Global.missao_atual, true, false)
@@ -48,6 +50,8 @@ func obter_objeto_interativo_atual() -> ObjetoInterativo:
 func obter_elemento(nome: String):
 	return find_child(nome, true, true)
 
+func adicionar_elemento_canvas(elemento: Node):
+	_canvas.add_child(elemento)
 
 # _________________________ GERENCIAMENTO DE TERRENOS _________________________ #
 

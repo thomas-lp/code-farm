@@ -1,13 +1,15 @@
-#roteador
+# roteador.py
 
-from analisador.missao1 import AnalisadorMissao1
-from analisador.missao4 import AnalisadorMissao4
+REGISTRO_ANALISADORES = {}
 
-def obter_analisador(id_missao: int, codigo: str):
-    if id_missao == 1:
-        return AnalisadorMissao1(codigo)
-    elif id_missao == 4:
-        return AnalisadorMissao4(codigo)
-    else:
-        raise ValueError(f"Missão {id_missao} não implementada.")
+def registrar_missao(id_missao: int):
+    def decorador(classe):
+        REGISTRO_ANALISADORES[id_missao] = classe
+        return classe
+    return decorador
 
+def obter_analisador(id_missao: int, codigo: str, contexto: dict = None):
+    cls = REGISTRO_ANALISADORES.get(id_missao)
+    if cls is None:
+        raise ValueError(f"Missão {id_missao} não registrada para a analise de código. Por favor, contate um desenvolvedor para solucionar o problema.")
+    return cls(codigo, contexto)
