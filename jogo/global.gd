@@ -4,7 +4,7 @@ var retomando_missao: bool = false
 
 const CAMINHO_SAVE = "user://save_jogo.gd"
 const QUANTIDADE_MISSOES = 5
-const MISSAO_INICIAL = 4
+const MISSAO_INICIAL = 1
 
 var _save_jogo: SaveJogo
 var missao_atual: int
