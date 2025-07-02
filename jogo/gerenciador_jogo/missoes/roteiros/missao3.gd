@@ -3,15 +3,15 @@ extends RoteiroMissao
 func executar() -> void:
 	await dialogo("Nossa! Olha só essa bagunça na cozinha... tem copos espalhados por toda parte!")
 	await dialogo("Que tal organizarmos isso? Mas antes, deixa eu te explicar uma coisa muito importante, e acho que os copos podem ajudar com isso!")
-	await dialogo("Na programação, usamos algo chamado variáveis para armazenar informações.")
+	await dialogo("Na programação, usamos algo chamado Variáveis para armazenar informações.")
 	await dialogo("Uma variável é como um copo: ela tem um nome e pode conter algo dentro. Por exemplo:")
 	await codigo("copo = \"água\"")
 	await _tocar_animacao_copo("despejar_agua")
 	await dialogo("Aqui, temos uma variável chamada copo, e ela está armazenando o valor 'água'. Mas olha só, se eu quiser trocar o que tem dentro do copo, basta fazer assim:")
 	await codigo("copo = \"suco\"")
 	await _tocar_animacao_copo("despejar_suco")
-	await dialogo("Agora, o copo contém suco! Isso mostra que variáveis podem mudar de valor ao longo do tempo.")
-	await dialogo("Legal, né? Agora é sua vez. Crie duas variáveis diferentes representando dois copos, e coloque suas bebidas favoritas dentro desses copos.")
+	await dialogo("Agora, o copo contém suco! Isso mostra que Variáveis podem mudar de valor ao longo do tempo.")
+	await dialogo("Legal, né? Agora é sua vez. Crie duas Variáveis diferentes representando dois copos, e coloque suas bebidas favoritas dentro desses copos.")
 
 	var sucesso = false
 	while not sucesso:

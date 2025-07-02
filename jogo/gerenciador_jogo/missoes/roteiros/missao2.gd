@@ -36,12 +36,13 @@ func parte2() -> void:
 	limpar_editor_codigo()
 	
 	await dialogo("Ótimo! Agora que você já sabe comentar uma linha, vamos aprender a comentar várias linhas de uma vez.")
-	await dialogo("Em Python, você pode usar três aspas duplas \"\"\" para criar comentários que ocupam várias linhas. Isso é útil para descrições mais longas ou para desativar trechos inteiros de código temporariamente.")
+	await dialogo('Em Python, você pode usar três aspas duplas """ para criar comentários que ocupam várias linhas, no inicio e no final do texto que queremos comentar.')
+	await dialogo("Isso é útil para descrições mais longas ou para desativar trechos inteiros de código temporariamente.")
 	await dialogo("Por exemplo, você pode descrever todo o propósito do seu código assim:")
-	await codigo("\"\"\" 
+	await codigo('""" 
 Este código organiza as tarefas da casa nova. É importante manter tudo bem documentado para não esquecer nada! 
-\"\"\"
-	")
+"""
+')
 	await dialogo("Experimente adicionar um comentário de várias linhas no início do seu código, explicando o que ele faz e por que ele é útil para você!")
 
 	var sucesso = false	

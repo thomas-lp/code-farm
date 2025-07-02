@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://chsijyi1x1s3"]
+[gd_scene load_steps=17 format=3 uid="uid://chsijyi1x1s3"]
 
 [ext_resource type="PackedScene" uid="uid://455f8bih0bus" path="res://mundo_jogo/terrenos/terreno_casa.tscn" id="1_4mwex"]
 [ext_resource type="PackedScene" uid="uid://dscfkde3tti8f" path="res://mundo_jogo/terrenos/terreno_fazenda.tscn" id="1_848jc"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dbkpdacppilwy" path="res://mundo_jogo/objeto_interativo/objeto_interativo.tscn" id="3_3at3k"]
 [ext_resource type="Texture2D" uid="uid://otnwpwe6jvss" path="res://assets/imagens/Tiny Wonder Forest/items&objects/summer and spring items.png" id="4_0nsch"]
 [ext_resource type="Texture2D" uid="uid://df3nifq2ujqwy" path="res://assets/imagens/retro_interior/TopDownHouse_SmallItems.png" id="7_ru7ms"]
+[ext_resource type="Texture2D" uid="uid://c7de14nbuvevr" path="res://assets/imagens/cute_fantasy/Outdoor decoration/Chest.png" id="7_yfmyd"]
 [ext_resource type="Texture2D" uid="uid://b0rkdwyiucb1j" path="res://assets/imagens/Tiny Wonder Farm/objects&items/plants free.png" id="8_jt3mr"]
 [ext_resource type="PackedScene" uid="uid://fdyhl54amort" path="res://mundo_jogo/animacoes/copo/copo.tscn" id="9_y1w4k"]
 
@@ -71,9 +72,23 @@ rotation = 1.5708
 [node name="Colisao" parent="TerrenoFazenda/Missao4/AreaDetecao" index="0"]
 shape = SubResource("CircleShape2D_wlrp0")
 
+[node name="Missao5" parent="TerrenoFazenda" instance=ExtResource("3_3at3k")]
+position = Vector2(-28, -146)
+
+[node name="Sprite" parent="TerrenoFazenda/Missao5" index="0"]
+texture = ExtResource("7_yfmyd")
+offset = Vector2(0, 10)
+
+[node name="Colisao" parent="TerrenoFazenda/Missao5" index="1"]
+position = Vector2(0, 3)
+rotation = 1.5708
+
+[node name="Colisao" parent="TerrenoFazenda/Missao5/AreaDetecao" index="0"]
+shape = SubResource("CircleShape2D_wlrp0")
+
 [node name="TerrenoCasa" parent="." instance=ExtResource("1_4mwex")]
 y_sort_enabled = true
-position = Vector2(-1067, -5)
+position = Vector2(-912, -5)
 
 [node name="Passagem2" parent="TerrenoCasa" instance=ExtResource("2_gcw66")]
 position = Vector2(48, 192)
@@ -120,7 +135,7 @@ shape = SubResource("CircleShape2D_wlrp0")
 position = Vector2(-144, 62.6667)
 
 [node name="Jogador" parent="." instance=ExtResource("2_ytvii")]
-position = Vector2(139, 78)
+position = Vector2(183, 90)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 unique_name_in_owner = true
@@ -131,6 +146,7 @@ unique_name_in_owner = true
 [editable path="TerrenoFazenda/Passagem1"]
 [editable path="TerrenoFazenda/Missao1"]
 [editable path="TerrenoFazenda/Missao4"]
+[editable path="TerrenoFazenda/Missao5"]
 [editable path="TerrenoCasa/Passagem2"]
 [editable path="TerrenoCasa/Missao2"]
 [editable path="TerrenoCasa/Missao3"]

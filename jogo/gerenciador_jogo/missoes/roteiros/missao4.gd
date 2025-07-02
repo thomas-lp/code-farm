@@ -4,22 +4,21 @@ func executar() -> void:
 	await dialogo("Ei! Olha só o quintal! Suas alfaces estão crescendo rápido, mas precisam de água todos os dias.")
 	await dialogo("São cinco cabeças de alface... Regar uma por uma com um comando separado seria bem cansativo, né?")
 	await dialogo("Imagine se você tivesse que escrever um comando pra cada uma, assim:")
-	await codigo("
-print(\"Regando alface 1\")
+	await codigo("print(\"Regando alface 1\")
 print(\"Regando alface 2\")
 print(\"Regando alface 3\")
 print(\"Regando alface 4\")
 print(\"Regando alface 5\")
-				")
+")
 	await dialogo("Funciona, mas é meio repetitivo... e se fossem 50 alfaces?")
 	await dialogo("É por isso que em programação usamos estruturas de repetição! Com o for, você consegue repetir uma tarefa várias vezes com pouquíssimas linhas.")
-	await dialogo("O comando for permite repetir uma ação um número determinado de vezes. Olha só como podemos reescrever o código anterior usando for:")
-	await codigo('
-for i in range(1, 6):
-	print("Regando alface", i)
-				')
-	await dialogo("Esse range(1, 6) cria um intervalo com os números de 1 até 5. A variável i vai mudando a cada repetição!")
-	await dialogo("É como se a gente estivesse com um balde de água, andando de alface em alface, dependendo de quantas vezes especificamos para isso acontecer no for!")
+	await dialogo("O comando for permite repetir uma ação um número determinado de vezes.")
+	await dialogo("Por exemplo, se você quiser empilhar 3 caixas, pode escrever assim:")
+	await codigo('for i in range(3):
+	print("Empilhando caixa número", i)
+')
+	await dialogo("Esse código vai repetir a frase 3 vezes, mudando o número automaticamente: 0, 1 e 2.")
+	await dialogo("A variável `i` vai mudando a cada repetição, seguindo os números do `range`.")
 	await dialogo("Vamos por isso em prática! Escreva um código que use for para regar todas as alfaces do quintal. Use print() para exibir qual alface está sendo regada!")
 
 	var sucesso = false
@@ -112,6 +111,7 @@ func _exibir_x_em_posicao(posicao: Vector2) -> void:
 	var label = Label.new()
 	label.text = "X"
 	label.modulate = Color.RED
+	label.z_index = 1
 
 	var settings = LabelSettings.new()
 	settings.font_size = 16
@@ -123,7 +123,7 @@ func _exibir_x_em_posicao(posicao: Vector2) -> void:
 	label.global_position = posicao
 
 	var tween = mundo_jogo.create_tween()
-	tween.tween_property(label, "modulate:a", 0.0, 5)
+	tween.tween_property(label, "modulate:a", 0.0, 8)
 	tween.tween_callback(label.queue_free)
 
 func mover_para(alvo: Node2D, destino: Vector2, duracao: float) -> void:

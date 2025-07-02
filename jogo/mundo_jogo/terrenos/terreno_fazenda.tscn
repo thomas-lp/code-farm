@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://dscfkde3tti8f"]
+[gd_scene load_steps=31 format=4 uid="uid://dscfkde3tti8f"]
 
 [ext_resource type="Texture2D" uid="uid://5juxh2tsxn8u" path="res://assets/imagens/Tiny Wonder Forest/tilemaps/summer tilemap.png" id="1_a84l1"]
 [ext_resource type="Texture2D" uid="uid://otnwpwe6jvss" path="res://assets/imagens/Tiny Wonder Forest/items&objects/summer and spring items.png" id="2_kjxtb"]
@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://33hnbk336g25" path="res://mundo_jogo/objeto_coletavel/objetos/regador.tscn" id="3_rvck2"]
 [ext_resource type="Texture2D" uid="uid://b0rkdwyiucb1j" path="res://assets/imagens/Tiny Wonder Farm/objects&items/plants free.png" id="4_t7cks"]
 [ext_resource type="Texture2D" uid="uid://cs6x5byw0iojp" path="res://assets/imagens/Farm RPG/Farm RPG FREE 16x16 - Tiny Asset Pack/Tileset/Walls and Floors copiar.png" id="5_7vmb3"]
+[ext_resource type="Texture2D" uid="uid://cl2aj8iqjbvdc" path="res://assets/imagens/cute_fantasy/Animals/Chicken/Chicken.png" id="5_54q2w"]
+[ext_resource type="Texture2D" uid="uid://bgh6kg546vyf7" path="res://assets/imagens/cute_fantasy/Animals/Cow/Cow.png" id="6_1ky57"]
+[ext_resource type="Texture2D" uid="uid://d141q17p6icre" path="res://assets/imagens/cute_fantasy/Animals/Pig/Pig.png" id="7_pl8cb"]
+[ext_resource type="PackedScene" uid="uid://bj01movk01joa" path="res://mundo_jogo/objeto_coletavel/objetos/comida_galinha.tscn" id="10_1p26g"]
+[ext_resource type="PackedScene" uid="uid://drwa3i5axhw0q" path="res://mundo_jogo/objeto_coletavel/objetos/comida_porco.tscn" id="11_p4khm"]
+[ext_resource type="PackedScene" uid="uid://ban151rs16440" path="res://mundo_jogo/objeto_coletavel/objetos/comida_vaca.tscn" id="12_bc6op"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mto8n"]
 texture = ExtResource("1_a84l1")
@@ -564,10 +570,31 @@ texture = ExtResource("2_kjxtb")
 7:4/0 = 0
 7:4/0/texture_origin = Vector2i(8, 0)
 7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(6, -2, 6, 8, -22, 8, -22, -2)
+1:12/0 = 0
 
 [sub_resource type="TileSet" id="TileSet_ys3wt"]
 physics_layer_0/collision_layer = 2
 sources/0 = SubResource("TileSetAtlasSource_dy4ew")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4ctdc"]
+texture = ExtResource("5_54q2w")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mi8ki"]
+texture = ExtResource("6_1ky57")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_20jst"]
+texture = ExtResource("7_pl8cb")
+0:0/size_in_atlas = Vector2i(2, 2)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_npj3h"]
+sources/0 = SubResource("TileSetAtlasSource_4ctdc")
+sources/1 = SubResource("TileSetAtlasSource_mi8ki")
+sources/2 = SubResource("TileSetAtlasSource_20jst")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kyq58"]
 texture = ExtResource("4_t7cks")
@@ -605,6 +632,9 @@ sources/0 = SubResource("TileSetAtlasSource_kyq58")
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_hnk5b"]
 scenes/1/scene = ExtResource("3_rvck2")
+scenes/2/scene = ExtResource("10_1p26g")
+scenes/3/scene = ExtResource("11_p4khm")
+scenes/4/scene = ExtResource("12_bc6op")
 
 [sub_resource type="TileSet" id="TileSet_5iwy1"]
 sources/0 = SubResource("TileSetScenesCollectionSource_hnk5b")
@@ -680,6 +710,10 @@ y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAOAAQAAAAEAAcAAAArAA8AAAAEAAcAAAAhABIAAAAEAAcAAAAaABgAAAAEAAcAAAACABMAAAAEAAcAAAD6/xgAAAAEAAcAAADy/w0AAAAEAAcAAAD3/xIAAAAEAAcAAAD5/woAAAAEAAcAAAD6////AAAEAAcAAAD//+n/AAAEAAcAAADz/+z/AAAEAAcAAAAOAOv/AAAEAAcAAAAPAPD/AAAEAAcAAAAkAOv/AAAEAAcAAAAsAPP/AAAEAAcAAAAqAO//AAAEAAcAAAAkAPv/AAAEAAcAAADy/wQAAAAEAAcAAADx////AAAEAAcAAAACAAIAAAAEAAcAAAAtAAkAAAAEAAcAAAAkAAoAAAAEAAcAAAAdAPj/AAAEAAcAAAAIAPL/AAAEAAcAAAD+//n/AAAEAAcAAAAKAAsAAAAEAAcAAAAJABgAAAAEAAcAAAAZAA4AAAAEAAcAAAAaAAcAAAAEAAcAAAAuAP7/AAAEAAcAAAA=")
 tile_set = SubResource("TileSet_ys3wt")
 
+[node name="Animais" type="TileMapLayer" parent="Composicao"]
+tile_map_data = PackedByteArray("AAAAAPX/AgAAAAAAAAACAPX/AQAAAAAAAAAEAPX/AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_npj3h")
+
 [node name="Fazenda" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -695,7 +729,7 @@ tile_set = SubResource("TileSet_ys3wt")
 
 [node name="Porta" type="TileMapLayer" parent="Fazenda"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAJAAIAAAAGAAAAAAA=")
+tile_map_data = PackedByteArray("AAAJAAIAAAAGAAAAAAAAAPb/AAABAAwAAAACAPb/AAABAAwAAAAEAPb/AAABAAwAAAA=")
 tile_set = SubResource("TileSet_ys3wt")
 
 [node name="Alfaces" type="TileMapLayer" parent="Fazenda"]
@@ -705,7 +739,7 @@ tile_set = SubResource("TileSet_vksow")
 
 [node name="Coletaveis" type="TileMapLayer" parent="."]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAANAPv/AAAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAALAPn/AAAAAAAAAwD6//b/AAAAAAAAAgAGAPL/AAAAAAAABAA=")
 tile_set = SubResource("TileSet_5iwy1")
 
 [node name="Interativos" type="TileMapLayer" parent="."]

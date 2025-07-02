@@ -33,9 +33,12 @@ func _ativar_objeto_missao_atual() -> void:
 		print("Parabéns! Você concluiu todas as missões!")
 
 func _ao_interagir_objeto() -> void:
+	if Global.retomando_missao:
+		return
+
 	interface_jogo.exibir_interface(interface_jogo.Interface.MISSAO)
-	
-	var jogador = mundo_jogo.find_child("Jogador")
+
+	var jogador = mundo_jogo.obter_jogador()
 	jogador.desativar_movimento()
 	_executar_missao_atual()
 

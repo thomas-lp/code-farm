@@ -1,7 +1,5 @@
 #test_missao1.py
 
-#http POST http://localhost:8000/analisar_codigo codigo="print('Fazenda Alegria')" id_missao=1
-
 from analisador.missao1 import AnalisadorMissao1
 
 def analisar(codigo):

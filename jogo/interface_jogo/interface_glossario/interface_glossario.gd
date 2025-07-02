@@ -89,7 +89,7 @@ func _exibir_termo_no_livro(termo: String) -> void:
 	var dados = Global.glossario.obter_dados_termo(termo)
 	_limpar_texto_livro()
 	
-	_pagina_descricao_livro.text = termo + ":\n\n" + dados["descricao"]
+	_pagina_descricao_livro.text = dados["nome"] + ":\n\n" + dados["descricao"]
 	_pagina_exemplo_livro.text = "Exemplo:\n\n" + dados["exemplo"]
 
 func _ao_mudar_texto_campo_pesquisa(novo_texto: String) -> void:
@@ -128,8 +128,10 @@ func _inicializar_glossario():
 	_mapa_botoes_termos.clear()
 
 	for termo in Global.glossario.obter_lista_termos_aprendidos():
+		var dados = Global.glossario.obter_dados_termo(termo)
+
 		var botao = CenaBotaoListaGlossario.instantiate()
-		botao.text = termo
+		botao.text = dados["nome"]
 		botao.pressed.connect(func(): _ao_clicar_termo(termo))
 		_lista_termos.add_child(botao)
 		_mapa_botoes_termos[termo] = botao

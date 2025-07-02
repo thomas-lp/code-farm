@@ -44,13 +44,19 @@ class AnalisadorMissao2(AnalisadorMissao):
             }
 
     def _analisar_parte2(self) -> dict:
-        # Procura por comentários de múltiplas linhas usando ast.Expr com ast.Constant do tipo str
         comentarios_multilinha = []
 
+        # Verifica se há uma docstring de módulo
+        docstring = ast.get_docstring(self.tree)
+        if docstring:
+            comentario = docstring.strip()
+            if "\n" in comentario or len(comentario.split()) > 5:
+                comentarios_multilinha.append(comentario)
+
+        # Também verifica outras strings isoladas no corpo do código
         for node in ast.walk(self.tree):
             if isinstance(node, ast.Expr) and isinstance(node.value, ast.Constant):
                 if isinstance(node.value.value, str):
-                    # Pode ser um docstring ou comentário de múltiplas linhas
                     comentario = node.value.value.strip()
                     if "\n" in comentario or len(comentario.split()) > 5:
                         comentarios_multilinha.append(comentario)
